@@ -1,46 +1,81 @@
-
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+// Mobile Menu Toggle
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
 
 menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
 }
 
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
+// Scroll Section Active Link + Animations
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
     sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 100;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+        const top = window.scrollY;
+        const offset = sec.offsetTop - 100;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
 
-        if(top >= offset && top < offset + height) {
-
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-            });
-
+        if (top >= offset && top < offset + height) {
+            // Active Nav Link
+            navLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector(`header nav a[href*="${id}"]`).classList.add('active');
+            
+            // Section Animation
             sec.classList.add('show-animate');
-
-        }
-
-        else {
+        } else {
             sec.classList.remove('show-animate');
         }
-
     });
 
-    let header= document.querySelector('header');
-
+    // Sticky Header
+    const header = document.querySelector('header');
     header.classList.toggle('sticky', window.scrollY > 100);
     
+    // Close Mobile Menu on Scroll
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
-
 }
 
-
+// FormSubmit Integration
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Loading State
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Submit to FormSubmit
+        const formAction = this.action;
+        const formData = new FormData(this);
+        
+        fetch(formAction, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirect to thank-you page (defined in FormSubmit's _next)
+                return response;
+            }
+            throw new Error('Form submission failed');
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+        })
+        .finally(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+    });
+}
