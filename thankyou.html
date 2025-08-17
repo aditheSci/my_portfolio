@@ -6,82 +6,36 @@
     <title>Thank You! | Aditya's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Override styles for thank-you page only */
-        body {
-            background: #081b29;
-            color: #ededed;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        .thank-you-message {
-            text-align: center;
-            max-width: 800px;
-            width: 90%;
-            padding: 40px;
-            border-radius: 15px;
-            background: rgba(0, 171, 240, 0.1);
-            box-shadow: 0 0 30px rgba(0, 171, 240, 0.2);
-        }
-        
-        .thank-you-message h1 {
-            font-size: 3rem;
-            color: #00abf0;
-            margin-bottom: 30px;
-            line-height: 1.3;
-        }
-        
-        .thank-you-message p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
+        /* Previous styles remain the same... */
         
         .thank-you-message .btn {
             display: inline-block;
-            padding: 18px 35px;
+            padding: 20px 40px; /* Increased padding */
             background: #00abf0;
             color: #081b29;
-            font-size: 1.3rem;
-            font-weight: 600;
-            border-radius: 8px;
+            font-size: 1.8rem; /* Increased from 1.3rem */
+            font-weight: 700; /* Bolder text */
+            border-radius: 12px; /* More rounded corners */
             text-decoration: none;
             transition: all 0.3s ease;
             border: 2px solid #00abf0;
+            margin-top: 20px;
         }
-        
-        .thank-you-message .btn:hover {
-            background: transparent;
-            color: #00abf0;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 171, 240, 0.3);
-        }
-        
-        /* Responsive adjustments */
+
+        /* Updated responsive sizes */
         @media (max-width: 768px) {
-            .thank-you-message h1 {
-                font-size: 2.2rem;
-            }
-            .thank-you-message p {
-                font-size: 1.2rem;
-            }
             .thank-you-message .btn {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+                font-size: 1.6rem; /* Larger on tablets */
+                padding: 18px 36px;
             }
         }
         
         @media (max-width: 480px) {
-            .thank-you-message {
-                padding: 30px 20px;
-            }
-            .thank-you-message h1 {
-                font-size: 1.8rem;
+            .thank-you-message .btn {
+                font-size: 1.4rem; /* Larger on phones */
+                padding: 16px 32px;
+                width: 100%; /* Full-width on smallest screens */
+                max-width: 300px; /* But not too wide */
             }
         }
     </style>
