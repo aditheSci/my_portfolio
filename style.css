@@ -567,20 +567,24 @@ span {
 }
 
 .project-box .btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: var(--main-color);
-  border-radius: 0.8rem;
-  font-size: 1.6rem;
-  color: var(--bg-color);
-  font-weight: 600;
-  transition: 0.5s;
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--main-color);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: var(--bg-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid var(--main-color);
+    margin-top: 1rem;
 }
 
 .project-box .btn:hover {
-  background: var(--bg-color);
-  color: var(--main-color);
-  box-shadow: 0 0 1rem var(--main-color);
+    background: transparent;
+    color: var(--main-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 171, 240, 0.3);
 }
 
 .contact {
@@ -913,6 +917,13 @@ section:nth-child(odd) .animate.scroll {
   }
 }
 
+@media (max-width: 768px) {
+    .project-box .btn {
+        padding: 10px 24px;
+        font-size: 1rem;
+    }
+}
+
 /* KEYFRAMES ANIMATION */
 @keyframes homeBgText {
 
@@ -960,6 +971,4 @@ section:nth-child(odd) .animate.scroll {
     width: 0;
   }
 }
-
-
 
